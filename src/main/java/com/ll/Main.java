@@ -16,6 +16,7 @@ public class Main {
                 String authorName = scanner.nextLine();
                 System.out.println("명언 : " + quote);
                 System.out.println("작가 : " + authorName);
+                System.out.println("1번 명언이 등록되었습니다.");
             }
             else if(a.equals("종료")) {
                 break;
