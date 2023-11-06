@@ -46,8 +46,12 @@ public class Main {
                         quotes.remove(Deleteid - 1);
                         System.out.println(Deleteid + "번 명언이 삭제되었습니다.");
                     }
-
-
+                    else if(quotes.isEmpty()){
+                        System.out.println(Deleteid + "번 명언은 존재하지 않습니다.");
+                    }
+                    else{
+                        System.out.println(Deleteid + "번 명언은 존재하지 않습니다.");
+                    }
 
 
             }
