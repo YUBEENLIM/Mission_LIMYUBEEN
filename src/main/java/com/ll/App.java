@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class App {
     public static void main(String[] args) {
         List<Quote> quotes = new ArrayList<>();
         System.out.println("== 명언 앱 ==");
