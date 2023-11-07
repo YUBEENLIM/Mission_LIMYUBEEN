@@ -11,7 +11,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int id = 0;
 
-
         while (true) {
             System.out.print("명령) ");
             String cmd = scanner.nextLine();
@@ -26,42 +25,61 @@ public class Main {
                 System.out.println(id + "번 명언이 등록되었습니다.");
                 Quote quote = new Quote(id, content, authorName);
                 quotes.add(quote);
-            }
-                else if (cmd.equals("목록")) {
 
+            } else if (cmd.equals("목록")) {
 
-                    System.out.println("번호 / 작가 / 명언");
-                    System.out.println("---------------------");
-                    for (int i = quotes.size() - 1; i >= 0; i--) {
-                        Quote quote = quotes.get(i);
-                        System.out.printf("%d / %s / %s\n", quote.id, quote.authorName, quote.content);
-                    }
+                System.out.println("번호 / 작가 / 명언");
+                System.out.println("---------------------");
+                for (int i = quotes.size() - 1; i >= 0; i--) {
+                    Quote quote = quotes.get(i);
+                    System.out.printf("%d / %s / %s\n", quote.id, quote.authorName, quote.content);
                 }
 
-                else if (cmd.startsWith("삭제?id=")){
-                    String idStr = cmd.substring("삭제?id=".length());
+            } else if (cmd.startsWith("삭제?id=")) {
+                String idStr = cmd.substring("삭제?id=".length());
+                int Deleteid = Integer.parseInt(idStr);
 
-                    int Deleteid = Integer.parseInt(idStr);
-                    if(Deleteid >= 1 && Deleteid <= quotes.size()) {
-                        quotes.remove(Deleteid - 1);
-                        System.out.println(Deleteid + "번 명언이 삭제되었습니다.");
-                    }
-                    else if(quotes.isEmpty()){
-                        System.out.println(Deleteid + "번 명언은 존재하지 않습니다.");
-                    }
-                    else{
-                        System.out.println(Deleteid + "번 명언은 존재하지 않습니다.");
-                    }
-
-
-            }
-                else if (cmd.equals("종료")) {
-                    break;
+                if (Deleteid >= 1 && Deleteid <= quotes.size()) {
+                    quotes.remove(Deleteid - 1);
+                    System.out.println(Deleteid + "번 명언이 삭제되었습니다.");
+                } else if (quotes.isEmpty()) {
+                    System.out.println(Deleteid + "번 명언은 존재하지 않습니다.");
+                } else {
+                    System.out.println(Deleteid + "번 명언은 존재하지 않습니다.");
                 }
+
+
+            } else if (cmd.startsWith("수정?id=")) {
+                String idStr = cmd.substring("수정?id=".length());
+                int Updateid = Integer.parseInt(idStr);
+
+                if (Updateid >=1 && Updateid <= quotes.size()) {
+                    Quote quoteToModify = quotes.get(Updateid - 1);
+                    Scanner scanners = new Scanner(System.in);
+
+                    System.out.println("명언(기존) : " + quoteToModify.getContent());
+                    System.out.print("명언 : ");
+                    String newContent = scanners.nextLine();
+
+                    System.out.println("작가(기존) : " + quoteToModify.getAuthorName() );
+                    System.out.print("작가 : ");
+                    String newAuthorName = scanners.nextLine();
+
+                    quoteToModify.setContent(newContent);
+                    quoteToModify.setAuthorName(newAuthorName);
+
+                    System.out.println(Updateid + "번 명언이 수정되었습니다.");
+                } else {
+                    System.out.println((Updateid + "번 명언은 존재하지 않습니다."));
+                }
+
+
+            } else if (cmd.equals("종료")) {
+                break;
             }
-            scanner.close();
         }
+        scanner.close();
     }
-
+}
 
 
