@@ -10,6 +10,7 @@ class Quote {
         this.content = content;
         this.authorName = authorName;
     }
+
     public void setContent(String content) {
         this.content = content;
     }
@@ -25,6 +26,13 @@ class Quote {
     public String getAuthorName() {
         return authorName;
     }
+
+    public int getId() {
+        return id;
+    }
+
+
+    public void setId(int id) {this.id = id;}
 }
 
 
